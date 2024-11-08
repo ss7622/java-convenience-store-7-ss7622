@@ -30,6 +30,25 @@ public class Products {
         return Collections.unmodifiableList(products);
     }
 
+    public static boolean isExist(String name) {
+        for (Products product : products) {
+            if (product.name.equals(name)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static int getQuantity(String name) {
+        int count = 0;
+        for (Products product : products) {
+            if (product.name.equals(name)) {
+                count += product.quantity;
+            }
+        }
+        return count;
+    }
+
     @Override
     public String toString() {
         String formatedPrice = NumberFormat.getInstance().format(price);
