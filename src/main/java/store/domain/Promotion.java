@@ -1,5 +1,6 @@
 package store.domain;
 
+import camp.nextstep.edu.missionutils.DateTimes;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,5 +25,30 @@ public class Promotion {
 
     public static void addPromotion(String name, int buy, int get, LocalDate start_date, LocalDate end_date) {
         promotions.add(new Promotion(name, buy, get, start_date, end_date));
+    }
+
+    public static Promotion checkPromotion(String promotionName) {
+        for (Promotion promotion : promotions) {
+            if (checkDuration(promotion, promotionName)) {
+                return promotion;
+            }
+        }
+        return null;
+    }
+
+    private static boolean checkDuration(Promotion promotion, String promotionName) {
+        if (promotion.name.equals(promotionName)) {
+            return promotion.start_date.isBefore(DateTimes.now().toLocalDate())
+                    && promotion.end_date.isAfter(DateTimes.now().toLocalDate());
+        }
+        return false;
+    }
+
+    public int getBuy() {
+        return buy;
+    }
+
+    public int getGet() {
+        return get;
     }
 }
