@@ -39,7 +39,7 @@ public class Products {
         return false;
     }
 
-    public static int getQuantity(String name) {
+    public static int getAllQuantity(String name) {
         int count = 0;
         for (Products product : products) {
             if (product.name.equals(name)) {
@@ -47,6 +47,35 @@ public class Products {
             }
         }
         return count;
+    }
+
+    public static int getNormalQuantity(String name) {
+        int count = 0;
+        for (Products product : products) {
+            if (product.name.equals(name) && product.promotion.equals("null")) {
+                count += product.quantity;
+            }
+        }
+        return count;
+    }
+
+    public static int getPromotionQuantity(String name) {
+        int count = 0;
+        for (Products product : products) {
+            if (product.name.equals(name) && !product.promotion.equals("null")) {
+                count += product.quantity;
+            }
+        }
+        return count;
+    }
+
+    public static String getPromotion(String name) {
+        for (Products product : products) {
+            if (product.name.equals(name)) {
+                return product.promotion;
+            }
+        }
+        return "null";
     }
 
     @Override
