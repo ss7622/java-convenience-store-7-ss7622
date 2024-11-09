@@ -81,9 +81,13 @@ public class Products {
     @Override
     public String toString() {
         String formatedPrice = NumberFormat.getInstance().format(price);
-        if (promotion.equals("null")) {
-            return String.format(" %s %s %d개", name, formatedPrice, quantity);
+        String quantityString = quantity + "개";
+        if (quantity == 0) {
+            quantityString = "재고 없음";
         }
-        return String.format(" %s %s %d개 %s", name, formatedPrice, quantity, promotion);
+        if (promotion.equals("null")) {
+            return String.format(" %s %s %s", name, formatedPrice, quantityString);
+        }
+        return String.format(" %s %s %s %s", name, formatedPrice, quantityString, promotion);
     }
 }
