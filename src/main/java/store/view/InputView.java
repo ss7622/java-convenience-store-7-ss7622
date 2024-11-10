@@ -56,7 +56,7 @@ public class InputView {
     }
 
     public String inputRetry() {
-        System.out.println(NEW_LINE + RETRY_GUIDE_MESSAGE + NEW_LINE);
+        System.out.println(NEW_LINE + RETRY_GUIDE_MESSAGE);
         while (true) {
             try {
                 return validateAnswer(Console.readLine());
