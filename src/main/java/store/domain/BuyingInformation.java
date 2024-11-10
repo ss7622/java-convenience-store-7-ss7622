@@ -43,9 +43,11 @@ public class BuyingInformation {
         if (!Products.isExist(name)) {
             throw new IllegalArgumentException(BuyingErrorMessage.IS_NOT_EXIST.getMessage());
         }
-        int quantity = Products.getAllQuantity(name);
-        if (quantity < count) {
+        if (Products.getAllQuantity(name) < count) {
             throw new IllegalArgumentException(BuyingErrorMessage.OVER_COUNT.getMessage());
+        }
+        if (count == 0) {
+            throw new IllegalArgumentException(BuyingErrorMessage.IS_NOT_CORRECT_NUMBER.getMessage());
         }
     }
 }
