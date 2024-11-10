@@ -39,6 +39,14 @@ public class Products {
         return false;
     }
 
+    public static void reduceQuantity(int quantity, String name, String promotion) {
+        for (Products product : products) {
+            if (product.name.equals(name) && product.promotion.equals(promotion)) {
+                product.quantity -= quantity;
+            }
+        }
+    }
+
     public static int getAllQuantity(String name) {
         int count = 0;
         for (Products product : products) {
@@ -71,7 +79,7 @@ public class Products {
 
     public static String getPromotion(String name) {
         for (Products product : products) {
-            if (product.name.equals(name)) {
+            if (product.name.equals(name) && !product.promotion.equals("null")) {
                 return product.promotion;
             }
         }
