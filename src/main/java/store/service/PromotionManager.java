@@ -3,6 +3,7 @@ package store.service;
 import store.domain.BuyingInformation;
 import store.domain.Products;
 import store.domain.Promotion;
+import store.domain.TotalPromotionInformation;
 
 public class PromotionManager {
     // 프로모션 기간 중인지 확인 후, 프로모션 적용이 안 되는 상품의 개수를 반환
@@ -40,6 +41,19 @@ public class PromotionManager {
             return promotion.getGet();
         }
         return 0;
+    }
+
+    // 구매한 상품 중 무료로 받을 수 있는 상품을 TotalPromotionInformation 객체에 포함한다.
+    public void addPromotionProduct(TotalPromotionInformation totalPromotionInformation,
+                                    BuyingInformation buyingInformation) {
+        Promotion promotion = checkPromotion(buyingInformation);
+        if (promotion == null) {
+            return;
+        }
+        String name = buyingInformation.getName();
+        int count = buyingInformation.getPromotionCount() / (promotion.getBuy() + promotion.getGet());
+        count *= promotion.getGet();
+        totalPromotionInformation.addPromotionInformation(name, Products.getPrice(name), count);
     }
 
     private Promotion checkPromotion(BuyingInformation buyingInformation) {
