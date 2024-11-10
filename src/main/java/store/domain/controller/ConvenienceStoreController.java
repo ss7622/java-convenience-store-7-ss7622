@@ -96,6 +96,12 @@ public class ConvenienceStoreController {
     }
 
     private void reduceQuantity(BuyingInformation information) {
+        if (information.getNormalCount() > Products.getNormalQuantity(information.getName())) {
+            Products.reduceQuantity(Products.getNormalQuantity(information.getName()), information.getName(), "null");
+            Products.reduceQuantity(information.getNormalCount() - Products.getNormalQuantity(information.getName()),
+                    information.getName(), Products.getPromotion(information.getName()));
+            return;
+        }
         Products.reduceQuantity(information.getNormalCount(), information.getName(), "null");
         Products.reduceQuantity(information.getPromotionCount(), information.getName(),
                 Products.getPromotion(information.getName()));
