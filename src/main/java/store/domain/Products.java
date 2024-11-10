@@ -103,8 +103,8 @@ public class Products {
             quantityString = "재고 없음";
         }
         if (promotion.equals("null")) {
-            return String.format(" %s %s %s", name, formatedPrice, quantityString);
+            return String.format(" %s %s원 %s", name, formatedPrice, quantityString);
         }
-        return String.format(" %s %s %s %s", name, formatedPrice, quantityString, promotion);
+        return String.format(" %s %s원 %s %s", name, formatedPrice, quantityString, promotion);
     }
 }
