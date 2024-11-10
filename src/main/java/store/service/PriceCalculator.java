@@ -16,22 +16,24 @@ public class PriceCalculator {
     public static int totalNormalPrice(List<BuyingInformation> buyingInformation) {
         int totalPrice = 0;
         for (BuyingInformation information : buyingInformation) {
-            int normalCount = information.getNormalCount();
-            normalCount += nonPromotionCount(information);
-            int price = Products.getPrice(information.getName());
+            if (Promotion.checkPromotion(Products.getPromotion(information.getName())) == null) {
+                int normalCount = information.getTotalCount();
+//            normalCount += nonPromotionCount(information);
+                int price = Products.getPrice(information.getName());
 
-            totalPrice += price * normalCount;
+                totalPrice += price * normalCount;
+            }
         }
         return totalPrice;
     }
 
-    private static int nonPromotionCount(BuyingInformation buyingInformation) {
-        String promotionName = Products.getPromotion(buyingInformation.getName());
-        Promotion promotion = Promotion.checkPromotion(promotionName);
-
-        if (promotion == null) {
-            return 0;
-        }
-        return buyingInformation.getPromotionCount() % (promotion.getGet() + promotion.getBuy());
-    }
+//    private static int nonPromotionCount(BuyingInformation buyingInformation) {
+//        String promotionName = Products.getPromotion(buyingInformation.getName());
+//        Promotion promotion = Promotion.checkPromotion(promotionName);
+//
+//        if (promotion == null) {
+//            return 0;
+//        }
+//        return buyingInformation.getPromotionCount() % (promotion.getGet() + promotion.getBuy());
+//    }
 }
