@@ -47,6 +47,15 @@ public class Products {
         }
     }
 
+    public static int getPrice(String name) {
+        for (Products product : products) {
+            if (product.name.equals(name)) {
+                return product.price;
+            }
+        }
+        return 0;
+    }
+
     public static int getAllQuantity(String name) {
         int count = 0;
         for (Products product : products) {
