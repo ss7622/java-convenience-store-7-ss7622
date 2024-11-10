@@ -19,6 +19,7 @@ public class Initializer {
         BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
 
         splitProductsFile(reader);
+        inputStream.close();
     }
 
     public void promotions() throws IOException {
@@ -27,6 +28,7 @@ public class Initializer {
         BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
 
         splitPromotionsFile(reader);
+        inputStream.close();
     }
 
     private void splitProductsFile(BufferedReader reader) throws IOException {
