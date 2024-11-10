@@ -35,6 +35,10 @@ public class BuyingInformation {
         return promotionCount;
     }
 
+    public int getTotalCount() {
+        return normalCount + promotionCount;
+    }
+
     private void checkInventory(String name, int count) {
         if (!Products.isExist(name)) {
             throw new IllegalArgumentException(BuyingErrorMessage.IS_NOT_EXIST.getMessage());
