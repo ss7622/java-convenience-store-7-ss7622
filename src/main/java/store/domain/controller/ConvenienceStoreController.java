@@ -27,6 +27,7 @@ public class ConvenienceStoreController {
         try {
             initializer.promotions();
             initializer.products();
+            Membership.getInstance().initialize();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

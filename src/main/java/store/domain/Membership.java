@@ -2,7 +2,7 @@ package store.domain;
 
 public class Membership {
 
-    private int membershipLimit = 8000;
+    private int membershipLimit = 0;
 
     private static final Membership membership = new Membership();
 
@@ -11,6 +11,10 @@ public class Membership {
 
     public static Membership getInstance() {
         return membership;
+    }
+
+    public void initialize() {
+        membershipLimit = 8000;
     }
 
     public int useMembership(int purchaseAmount) {
