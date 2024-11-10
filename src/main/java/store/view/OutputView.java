@@ -32,9 +32,9 @@ public class OutputView {
 
     public void printBuyingInformationMessage(List<BuyingInformation> buyingInformation) {
         System.out.println(NEW_LINE + START_OF_RECEIPT);
-        System.out.printf("%-16s\t%-4s\t%-5s\n", "상품명", "수량", "금액");
+        System.out.printf("%-16s\t%-4s\t  %-5s\n", "상품명", "수량", "금액");
         for (BuyingInformation information : buyingInformation) {
-            System.out.printf("%-16s\t%-4d\t%,-5d\n", information.getName(), information.getTotalCount(),
+            System.out.printf("%-16s\t%-4d\t  %,-5d\n", information.getName(), information.getTotalCount(),
                     information.getTotalCount() * Products.getPrice(information.getName()));
         }
 
@@ -57,9 +57,9 @@ public class OutputView {
         int totalPrice = totalPriceAndCount.getTotalPrice();
         int promotionSale = promotionInformation.getTotalPrice();
         int finalPrice = totalPrice - promotionSale - membershipSale;
-        System.out.printf("%-16s\t%-4d\t%,-5d\n", "총구매액", totalPriceAndCount.getCount(), totalPrice);
-        System.out.printf("%-24s\t-%,-5d\n", "행사할인", promotionSale);
-        System.out.printf("%-24s\t-%,-5d\n", "멤버십할인", membershipSale);
-        System.out.printf("%-24s\t%,-5d\n", "내실돈", finalPrice);
+        System.out.printf("%-16s\t%-4d\t  %,-5d\n", "총구매액", totalPriceAndCount.getCount(), totalPrice);
+        System.out.printf("%-24s\t  -%,-5d\n", "행사할인", promotionSale);
+        System.out.printf("%-24s\t  -%,-5d\n", "멤버십할인", membershipSale);
+        System.out.printf("%-24s\t  %,-5d\n", "내실돈", finalPrice);
     }
 }

@@ -106,10 +106,7 @@ public class ConvenienceStoreController {
                     cantApplyPromotionCount + information.getNormalCount());
             if (answer.equals("N")) {
                 information.adjustCount(0, information.getPromotionCount() - cantApplyPromotionCount);
-                return;
             }
-            information.adjustCount(cantApplyPromotionCount + information.getNormalCount(),
-                    information.getPromotionCount() - cantApplyPromotionCount);
         }
     }
 
