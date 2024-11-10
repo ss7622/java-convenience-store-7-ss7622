@@ -1,5 +1,6 @@
 package store.domain.controller;
 
+import camp.nextstep.edu.missionutils.Console;
 import java.io.IOException;
 import java.util.List;
 import store.domain.BuyingInformation;
@@ -82,6 +83,7 @@ public class ConvenienceStoreController {
             printReceipt(buyingInformation, membershipSale);
             askAdditionalItems();
         }
+        Console.close();
     }
 
     private void calculatePurchaseAmount(BuyingInformation information) {
