@@ -69,9 +69,11 @@ public class ConvenienceStoreController {
     }
 
     public void printReceipt(List<BuyingInformation> buyingInformation, int membershipSale) {
-        outputView.printBuyingInformationMessage(buyingInformation);
-        outputView.printPromotionInformation(totalPromotionInformation);
-        outputView.printTotalInformation(totalPriceAndCount, totalPromotionInformation, membershipSale);
+        if (totalPriceAndCount.getCount() != 0) {
+            outputView.printBuyingInformationMessage(buyingInformation);
+            outputView.printPromotionInformation(totalPromotionInformation);
+            outputView.printTotalInformation(totalPriceAndCount, totalPromotionInformation, membershipSale);
+        }
     }
 
     public void askAdditionalItems() {

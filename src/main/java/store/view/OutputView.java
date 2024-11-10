@@ -34,8 +34,10 @@ public class OutputView {
         System.out.println(NEW_LINE + START_OF_RECEIPT);
         System.out.printf("%-16s\t%-4s\t  %-5s\n", "상품명", "수량", "금액");
         for (BuyingInformation information : buyingInformation) {
-            System.out.printf("%-16s\t%-4d\t  %,-5d\n", information.getName(), information.getTotalCount(),
-                    information.getTotalCount() * Products.getPrice(information.getName()));
+            if (information.getTotalCount() != 0) {
+                System.out.printf("%-16s\t%-4d\t  %,-5d\n", information.getName(), information.getTotalCount(),
+                        information.getTotalCount() * Products.getPrice(information.getName()));
+            }
         }
 
     }
