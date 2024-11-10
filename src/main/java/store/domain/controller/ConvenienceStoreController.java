@@ -101,7 +101,7 @@ public class ConvenienceStoreController {
 
     private void cantApplyBenefit(BuyingInformation information) {
         int cantApplyPromotionCount = promotionManager.cantApplyPromotionCount(information);
-        if (cantApplyPromotionCount != 0) {
+        if (cantApplyPromotionCount != -1) {
             String answer = inputView.inputNonPromotion(information.getName(),
                     cantApplyPromotionCount + information.getNormalCount());
             if (answer.equals("N")) {

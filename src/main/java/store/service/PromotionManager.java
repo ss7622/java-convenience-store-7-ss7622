@@ -12,7 +12,7 @@ public class PromotionManager {
         int promotionQuantity = Products.getPromotionQuantity(buyingInformation.getName());
         if (promotion == null ||
                 promotionQuantity > buyingInformation.getPromotionCount()) {
-            return 0;
+            return -1;
         }
         return promotionQuantity % (promotion.getBuy() + promotion.getGet());
     }

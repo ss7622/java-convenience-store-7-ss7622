@@ -32,6 +32,9 @@ public class Promotion {
     }
 
     public static Promotion checkPromotion(String promotionName) {
+        if (promotionName.equals("null")) {
+            return null;
+        }
         for (Promotion promotion : promotions) {
             if (checkDuration(promotion, promotionName)) {
                 return promotion;
