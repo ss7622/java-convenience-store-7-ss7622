@@ -13,7 +13,7 @@ public class Promotion {
     private final LocalDate start_date;
     private final LocalDate end_date;
 
-    private static final List<Promotion> promotions = new ArrayList<>();
+    private static List<Promotion> promotions = new ArrayList<>();
 
     private Promotion(String name, int buy, int get, LocalDate start_date, LocalDate end_date) {
         this.name = name;
@@ -25,6 +25,10 @@ public class Promotion {
 
     public static void addPromotion(String name, int buy, int get, LocalDate start_date, LocalDate end_date) {
         promotions.add(new Promotion(name, buy, get, start_date, end_date));
+    }
+
+    public static void initializePromotions() {
+        promotions = new ArrayList<>();
     }
 
     public static Promotion checkPromotion(String promotionName) {

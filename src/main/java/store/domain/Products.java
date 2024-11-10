@@ -11,7 +11,7 @@ public class Products {
     private int quantity;
     private final String promotion;
 
-    private static final List<Products> products = new ArrayList<>();
+    private static List<Products> products = new ArrayList<>();
 
     private Products(String name, int price, int quantity, String promotion) {
         this.name = name;
@@ -21,13 +21,16 @@ public class Products {
     }
 
     public static void add(String name, int price, int quantity, String promotion) {
-
         Products product = new Products(name, price, quantity, promotion);
         products.add(product);
     }
 
     public static List<Products> getProducts() {
         return Collections.unmodifiableList(products);
+    }
+
+    public static void initializeProducts() {
+        products = new ArrayList<>();
     }
 
     public static boolean isExist(String name) {

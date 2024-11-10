@@ -14,6 +14,7 @@ public class Initializer {
     private static final String SEPARATOR = ",";
 
     public void products() throws IOException {
+        Products.initializeProducts();
         InputStream inputStream = Application.class.getClassLoader().getResourceAsStream("products.md");
         BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
 
@@ -21,6 +22,7 @@ public class Initializer {
     }
 
     public void promotions() throws IOException {
+        Promotion.initializePromotions();
         InputStream inputStream = Application.class.getClassLoader().getResourceAsStream("promotions.md");
         BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
 
