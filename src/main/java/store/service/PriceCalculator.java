@@ -3,7 +3,6 @@ package store.service;
 import java.util.List;
 import store.domain.BuyingInformation;
 import store.domain.Products;
-import store.domain.Promotion;
 
 public class PriceCalculator {
     // 구매한 품목의 가격을 반환한다.
@@ -16,13 +15,11 @@ public class PriceCalculator {
     public static int totalNormalPrice(List<BuyingInformation> buyingInformation) {
         int totalPrice = 0;
         for (BuyingInformation information : buyingInformation) {
-            if (Promotion.checkPromotion(Products.getPromotion(information.getName())) == null) {
-                int normalCount = information.getTotalCount();
+            int normalCount = information.getNormalCount();
 //            normalCount += nonPromotionCount(information);
-                int price = Products.getPrice(information.getName());
+            int price = Products.getPrice(information.getName());
 
-                totalPrice += price * normalCount;
-            }
+            totalPrice += price * normalCount;
         }
         return totalPrice;
     }
