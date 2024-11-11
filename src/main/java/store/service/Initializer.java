@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.time.LocalDate;
+import java.util.Objects;
 import store.Application;
 import store.domain.Products;
 import store.domain.Promotion;
@@ -16,7 +17,7 @@ public class Initializer {
     public void products() throws IOException {
         Products.initializeProducts();
         InputStream inputStream = Application.class.getClassLoader().getResourceAsStream("products.md");
-        BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
+        BufferedReader reader = new BufferedReader(new InputStreamReader(Objects.requireNonNull(inputStream)));
 
         splitProductsFile(reader);
         inputStream.close();
@@ -25,7 +26,7 @@ public class Initializer {
     public void promotions() throws IOException {
         Promotion.initializePromotions();
         InputStream inputStream = Application.class.getClassLoader().getResourceAsStream("promotions.md");
-        BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
+        BufferedReader reader = new BufferedReader(new InputStreamReader(Objects.requireNonNull(inputStream)));
 
         splitPromotionsFile(reader);
         inputStream.close();
