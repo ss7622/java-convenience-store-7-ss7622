@@ -45,8 +45,10 @@ public class Promotion {
 
     private static boolean checkDuration(Promotion promotion, String promotionName) {
         if (promotion.name.equals(promotionName)) {
-            return promotion.start_date.isBefore(DateTimes.now().toLocalDate())
-                    && promotion.end_date.isAfter(DateTimes.now().toLocalDate());
+            return (promotion.start_date.isEqual(DateTimes.now().toLocalDate())
+                    || promotion.start_date.isBefore(DateTimes.now().toLocalDate()))
+                    && (promotion.end_date.isEqual(DateTimes.now().toLocalDate())
+                    || promotion.end_date.isAfter(DateTimes.now().toLocalDate()));
         }
         return false;
     }
