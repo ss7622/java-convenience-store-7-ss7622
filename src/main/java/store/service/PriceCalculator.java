@@ -3,6 +3,8 @@ package store.service;
 import java.util.List;
 import store.domain.BuyingInformation;
 import store.domain.Products;
+import store.domain.TotalPriceAndCount;
+import store.domain.TotalPromotionInformation;
 
 public class PriceCalculator {
     // 구매한 품목의 가격을 반환한다.
@@ -22,6 +24,11 @@ public class PriceCalculator {
             totalPrice += price * normalCount;
         }
         return totalPrice;
+    }
+
+    public static int anotherCase(TotalPriceAndCount totalPriceAndCount,
+                                  TotalPromotionInformation totalPromotionInformation) {
+        return totalPriceAndCount.getTotalPrice() - totalPromotionInformation.getTotalPrice();
     }
 
 //    private static int nonPromotionCount(BuyingInformation buyingInformation) {
