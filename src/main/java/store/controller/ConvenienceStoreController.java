@@ -64,8 +64,7 @@ public class ConvenienceStoreController {
         String answer = inputView.inputMembership();
         int membershipSale = 0;
         if (answer.equals("Y")) {
-            membershipSale = membership.useMembership(
-                    PriceCalculator.anotherCase(totalPriceAndCount, totalPromotionInformation));
+            membershipSale = membership.useMembership(PriceCalculator.totalNormalPrice(buyingInformation));
         }
         return membershipSale;
     }
