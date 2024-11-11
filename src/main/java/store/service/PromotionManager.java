@@ -9,7 +9,6 @@ public class PromotionManager {
     // 프로모션 기간 중인지 확인 후, 프로모션 적용이 안 되는 상품의 개수를 반환
     public int cantApplyPromotionCount(BuyingInformation buyingInformation) {
         Promotion promotion = checkPromotion(buyingInformation);
-        int promotionQuantity = Products.getPromotionQuantity(buyingInformation.getName());
         if (promotion == null) {
             return -1;
         }
