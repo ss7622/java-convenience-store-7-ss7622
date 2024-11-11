@@ -11,8 +11,7 @@ public class PromotionManager {
         Promotion promotion = checkPromotion(buyingInformation);
         int promotionQuantity = Products.getPromotionQuantity(buyingInformation.getName());
         if (promotion == null ||
-                promotionQuantity > buyingInformation.getPromotionCount() ||
-                promotionQuantity >= buyingInformation.getTotalCount()) {
+                promotionQuantity > buyingInformation.getTotalCount()) {
             return -1;
         }
         return promotionQuantity % (promotion.getBuy() + promotion.getGet());
