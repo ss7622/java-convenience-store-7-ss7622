@@ -79,7 +79,6 @@ public class ConvenienceStoreController {
     public void askAdditionalItems() {
         String answer = inputView.inputRetry();
         if (answer.equals("Y")) {
-            initialize();
             List<BuyingInformation> buyingInformation = buyProduct();
             calculateProcess(buyingInformation);
             int membershipSale = applyMembership(buyingInformation);
