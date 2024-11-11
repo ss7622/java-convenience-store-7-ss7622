@@ -10,11 +10,10 @@ public class PromotionManager {
     public int cantApplyPromotionCount(BuyingInformation buyingInformation) {
         Promotion promotion = checkPromotion(buyingInformation);
         int promotionQuantity = Products.getPromotionQuantity(buyingInformation.getName());
-        if (promotion == null ||
-                promotionQuantity > buyingInformation.getTotalCount()) {
+        if (promotion == null) {
             return -1;
         }
-        return promotionQuantity % (promotion.getBuy() + promotion.getGet());
+        return buyingInformation.getPromotionCount() % (promotion.getBuy() + promotion.getGet());
     }
 
     // 구매한 상품이 프로모션 기간 중에 있다면, 프로모션 재고와 일반 재고로 갯수를 나누는 작업

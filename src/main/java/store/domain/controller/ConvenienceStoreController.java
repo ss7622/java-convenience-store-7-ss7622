@@ -50,8 +50,8 @@ public class ConvenienceStoreController {
         initializeProcess();
         for (BuyingInformation information : buyingInformation) {
             promotionManager.divideNormalAndPromotionProduct(information);
-            cantApplyBenefit(information);
             checkCanGetBenefit(information);
+            cantApplyBenefit(information);
             reduceQuantity(information);
             calculatePurchaseAmount(information);
         }
@@ -109,9 +109,13 @@ public class ConvenienceStoreController {
 
     private void cantApplyBenefit(BuyingInformation information) {
         int cantApplyPromotionCount = promotionManager.cantApplyPromotionCount(information);
-        if (cantApplyPromotionCount != -1 && information.getNormalCount() != 0) {
-            String answer = inputView.inputNonPromotion(information.getName(),
-                    cantApplyPromotionCount + information.getNormalCount());
+        if (cantApplyPromotionCount != -1 && (information.getNormalCount() != 0
+                || information.getPromotionCount() != 0)) {
+            String answer = "null";
+            if (cantApplyPromotionCount + information.getNormalCount() != 0) {
+                answer = inputView.inputNonPromotion(information.getName(),
+                        cantApplyPromotionCount + information.getNormalCount());
+            }
             if (answer.equals("N")) {
                 information.adjustCount(0, information.getPromotionCount() - cantApplyPromotionCount);
             }
