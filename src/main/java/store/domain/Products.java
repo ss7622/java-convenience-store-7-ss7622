@@ -98,6 +98,14 @@ public class Products {
         return "null";
     }
 
+    public static boolean canClose() {
+        int count = 0;
+        for (Products product : products) {
+            count += product.quantity;
+        }
+        return count == 0;
+    }
+
     @Override
     public String toString() {
         String formatedPrice = NumberFormat.getInstance().format(price);

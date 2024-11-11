@@ -8,6 +8,7 @@ import store.domain.Membership;
 import store.domain.Products;
 import store.domain.TotalPriceAndCount;
 import store.domain.TotalPromotionInformation;
+import store.domain.exception.BuyingErrorMessage;
 import store.service.Initializer;
 import store.service.PriceCalculator;
 import store.service.PromotionManager;
@@ -79,10 +80,10 @@ public class ConvenienceStoreController {
     public void askAdditionalItems() {
         String answer = inputView.inputRetry();
         if (answer.equals("Y")) {
+            checkStoreQuantity();
             List<BuyingInformation> buyingInformation = buyProduct();
             calculateProcess(buyingInformation);
-            int membershipSale = applyMembership(buyingInformation);
-            printReceipt(buyingInformation, membershipSale);
+            printReceipt(buyingInformation, applyMembership(buyingInformation));
             askAdditionalItems();
         }
         Console.close();
@@ -135,6 +136,12 @@ public class ConvenienceStoreController {
         promotionManager = new PromotionManager();
         totalPriceAndCount = new TotalPriceAndCount();
         totalPromotionInformation = new TotalPromotionInformation();
+    }
+
+    private void checkStoreQuantity() {
+        if (Products.canClose()) {
+            throw new IllegalArgumentException(BuyingErrorMessage.HAVE_NO_ANY_PRODUCT.getMessage());
+        }
     }
 
 }
