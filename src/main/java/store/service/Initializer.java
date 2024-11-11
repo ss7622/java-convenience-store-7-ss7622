@@ -10,7 +10,7 @@ import java.time.LocalDate;
 import java.util.List;
 import store.domain.Products;
 import store.domain.Promotion;
-import store.service.exception.InitializerException;
+import store.service.exception.InitializerErrorMessage;
 
 public class Initializer {
 
@@ -77,13 +77,13 @@ public class Initializer {
 
     private void validatePromotionBuyGet(int buy, int get) {
         if (buy <= 0 || get <= 0) {
-            throw new IllegalArgumentException(InitializerException.IS_NOT_POSITIVE.getMessage());
+            throw new IllegalArgumentException(InitializerErrorMessage.IS_NOT_POSITIVE.getMessage());
         }
     }
 
     private void validatePromotionDate(LocalDate startDate, LocalDate endDate) {
         if (startDate.isAfter(endDate)) {
-            throw new IllegalArgumentException(InitializerException.IS_NOT_VALID_DATE.getMessage());
+            throw new IllegalArgumentException(InitializerErrorMessage.IS_NOT_VALID_DATE.getMessage());
         }
     }
 

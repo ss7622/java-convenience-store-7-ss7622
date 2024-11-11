@@ -4,6 +4,7 @@ import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import store.domain.exception.ProductsErrorMessage;
 
 public class Products {
     private final String name;
@@ -21,6 +22,7 @@ public class Products {
     }
 
     public static void add(String name, int price, int quantity, String promotion) {
+        validate(price, quantity);
         Products product = new Products(name, price, quantity, promotion);
         products.add(product);
     }
@@ -104,6 +106,15 @@ public class Products {
             count += product.quantity;
         }
         return count == 0;
+    }
+
+    private static void validate(int price, int quantity) {
+        if (price <= 0) {
+            throw new IllegalArgumentException(ProductsErrorMessage.IS_NOT_POSITIVE.getMessage());
+        }
+        if (quantity < 0) {
+            throw new IllegalArgumentException(ProductsErrorMessage.IS_NEGATIVE.getMessage());
+        }
     }
 
     @Override
