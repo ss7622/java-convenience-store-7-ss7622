@@ -30,7 +30,7 @@ public class ConvenienceStoreController {
             initializer.products();
             Membership.getInstance().initialize();
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            throw new IllegalArgumentException(e);
         }
     }
 
