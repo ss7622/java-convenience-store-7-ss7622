@@ -79,7 +79,7 @@ class ApplicationTest extends NsTest {
     @Test
     void 일반_재고와_함께_구매할_때_행사_할인_테스트() {
         assertSimpleTest(() -> {
-            run("[콜라-14],[사이다-10]", "Y", "Y", "N", "N", "N");
+            run("[콜라-14],[사이다-10]", "Y", "Y", "N", "N");
             assertThat(output().replaceAll("\\s", "")).contains("콜라3사이다2");
         });
     }
@@ -114,7 +114,7 @@ class ApplicationTest extends NsTest {
     @Test
     void 행사_상품_멤버십_할인_테스트() {
         assertSimpleTest(() -> {
-            run("[콜라-12],[사이다-8]", "Y", "N", "Y", "N");
+            run("[콜라-12],[사이다-8]", "Y", "Y", "N");
             assertThat(output().replaceAll("\\s", "")).contains("멤버십할인-1,500");
         });
     }

@@ -61,10 +61,10 @@ public class PromotionManager {
 
     // 상품을 추가로 더 줄 수 있는지 재고를 확인하는 메서드
     private boolean checkCanGive(BuyingInformation buyingInformation, Promotion promotion) {
-        int remain = buyingInformation.getTotalCount() % (promotion.getGet() + promotion.getBuy());
+        int remain = buyingInformation.getPromotionCount() % (promotion.getGet() + promotion.getBuy());
         int totalGiveCount = buyingInformation.getPromotionCount() + promotion.getGet();
 
-        return remain == promotion.getBuy();
+        return remain == promotion.getBuy() &&
+                totalGiveCount <= Products.getPromotionQuantity(buyingInformation.getName());
     }
-//    &&totalGiveCount <= Products.getPromotionQuantity(buyingInformation.getName()
 }
