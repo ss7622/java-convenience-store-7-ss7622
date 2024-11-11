@@ -1,4 +1,4 @@
-package store.domain.controller;
+package store.controller;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.io.IOException;

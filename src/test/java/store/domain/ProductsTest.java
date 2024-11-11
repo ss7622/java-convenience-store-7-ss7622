@@ -8,7 +8,7 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import store.Application;
-import store.domain.controller.ConvenienceStoreController;
+import store.controller.ConvenienceStoreController;
 
 class ProductsTest extends NsTest {
 

@@ -1,8 +1,8 @@
 package store;
 
 import java.util.List;
+import store.controller.ConvenienceStoreController;
 import store.domain.BuyingInformation;
-import store.domain.controller.ConvenienceStoreController;
 
 public class Application {
     public static void main(String[] args) {
