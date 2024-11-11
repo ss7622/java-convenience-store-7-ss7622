@@ -22,6 +22,7 @@ public class Initializer {
         BufferedReader reader = new BufferedReader(new StringReader(String.join("\n", lines)));
 
         splitProductsFile(reader);
+        reader.close();
     }
 
     public void promotions() throws IOException {
@@ -31,6 +32,7 @@ public class Initializer {
         BufferedReader reader = new BufferedReader(new StringReader(String.join("\n", lines)));
 
         splitPromotionsFile(reader);
+        reader.close();
     }
 
     private void splitProductsFile(BufferedReader reader) throws IOException {
