@@ -114,7 +114,7 @@ class ApplicationTest extends NsTest {
     @Test
     void 행사_상품_멤버십_할인_테스트() {
         assertSimpleTest(() -> {
-            run("[콜라-12],[사이다-8]", "Y", "Y", "N");
+            run("[콜라-12],[사이다-8]", "Y", "Y", "Y", "N");
             assertThat(output().replaceAll("\\s", "")).contains("멤버십할인-1,500");
         });
     }
