@@ -2,11 +2,12 @@ package store.service;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.io.StringReader;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.time.LocalDate;
-import java.util.Objects;
-import store.Application;
+import java.util.List;
 import store.domain.Products;
 import store.domain.Promotion;
 
@@ -16,20 +17,20 @@ public class Initializer {
 
     public void products() throws IOException {
         Products.initializeProducts();
-        InputStream inputStream = Application.class.getClassLoader().getResourceAsStream("products.md");
-        BufferedReader reader = new BufferedReader(new InputStreamReader(Objects.requireNonNull(inputStream)));
+        Path path = Paths.get("src/main/resources/products.md");
+        List<String> lines = Files.readAllLines(path);
+        BufferedReader reader = new BufferedReader(new StringReader(String.join("\n", lines)));
 
         splitProductsFile(reader);
-        inputStream.close();
     }
 
     public void promotions() throws IOException {
         Promotion.initializePromotions();
-        InputStream inputStream = Application.class.getClassLoader().getResourceAsStream("promotions.md");
-        BufferedReader reader = new BufferedReader(new InputStreamReader(Objects.requireNonNull(inputStream)));
+        Path path = Paths.get("src/main/resources/promotions.md");
+        List<String> lines = Files.readAllLines(path);
+        BufferedReader reader = new BufferedReader(new StringReader(String.join("\n", lines)));
 
         splitPromotionsFile(reader);
-        inputStream.close();
     }
 
     private void splitProductsFile(BufferedReader reader) throws IOException {
