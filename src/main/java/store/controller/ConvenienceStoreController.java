@@ -123,10 +123,12 @@ public class ConvenienceStoreController {
     private void checkCanGetBenefit(BuyingInformation information) {
         int canGetFreeCount = promotionManager.canGetFreeCount(information);
         if (canGetFreeCount != 0) {
-            String answer = inputView.inputGetAdditionalProduct(information.getName(), canGetFreeCount);
-
-            if (answer.equals("Y")) {
-                information.adjustCount(information.getNormalCount(), information.getPromotionCount() + 1);
+            if (inputView.inputGetAdditionalProduct(information.getName(), canGetFreeCount).equals("Y")) {
+                if (Products.getPromotionQuantity(information.getName()) > information.getPromotionCount()) {
+                    information.adjustCount(information.getNormalCount(), information.getPromotionCount() + 1);
+                    return;
+                }
+                information.adjustCount(information.getNormalCount() + 1, information.getPromotionCount());
             }
         }
     }
